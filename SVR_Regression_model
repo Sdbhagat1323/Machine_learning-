@@ -1,0 +1,40 @@
+# import libraries 
+import numpy as np
+import pandas as pd 
+from matplotlib import pyplot as plt 
+
+# import csv file Or creating dataset 
+
+dataset = pd.read_csv("Position_Salaries.csv")
+
+# creating X and y variable vectors 
+
+X = dataset.iloc[:, __].values 
+y = dataset.iloc[:, _].values
+
+# Scaling data 
+from sklearn.preprocessing import StandardScaler
+Sc_X = StandardScaler()
+Sc_y = StandardScaler()
+
+X = Sc_X.fit_transform(X)
+y = Sc_y.fit_transform(y)
+
+# fitting SVR model 
+# create regressor 
+
+from sklearn.svm import SVR
+regressor = SVR(kernel = "rbf")
+regressor.fit(X, y)
+
+
+# predict the values 
+y_pred = Sc_y.inverse_transform(regressor.predict(np.array([[Point_x]]))) 
+ # visuailzation
+ 
+plt.scatter(X, y, color = "red")
+plt.plot(X, regressor.predict(X), color = "blue")
+plt.title("Lie detector_SVR")
+plt.xlabel("Experience")
+plt.ylabel("Salaries")
+plt.show()
